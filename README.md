@@ -17,7 +17,8 @@ for each cell in the grid <br>
 if cell == wall : it's marked "X" <br>
 else it's position value is encrypted and stored in the grid array as a 32-bit cipher <br>
  <br> <br> <br>
-<li><h3><u>Wall generation:</u></h3>
+ 
+<li><h3>Wall generation:</h3>
 // walls are determined by (ID % prime_number) == 0 for sequential primes < 50 <br> <br>
 sequential primes < 50 are exactly 15 primes <br>
 for the sake of simplicity, let's consider instead the first 16 primes <br>
@@ -55,7 +56,8 @@ rotate this result left by ID % 32 <br>
 rotation means bits that fall off the left end come back on the right <br>
 note: ID % 32 == ID & 31 <br>
 store this result in the grid array <br> <br> <br></li>
-<li><h3><u>Decrypting the grid:</u></h3>
+ 
+<li><h3>Decrypting the grid:</h3>
 <code>temp = rotate_right(code, ID % 32) XOR ID</code><br>
 <code>x = (temp >> 16) & 0xFFFF</code> <br>
 <code>y = temp & 0xFFFF</code> <br>
@@ -74,7 +76,8 @@ x = (position >> 16) & 0xFFFF <br>
 shift right 16 bits, mask to 16 bits <br> <br>
 y = position & 0xFFFF <br>
 just take low 16 bits <br> <br> <br> </li>
-<li><h3><u>Reverse engineering to find the ID:</u></h3>
+
+<li><h3>Reverse engineering to find the ID:</h3>
 //not implemented in code <br>
 <code>cell_value = rotate_left(((x<<16 | y) XOR ID), ID % 32) </code> <br> <br>
 the key is to find the rotating value R = ID % 32 <br>
