@@ -12,7 +12,7 @@
 <h2> Explanation: </h2>
 <ul>
 Ask the user for an 8-digit ID <br>
-Create a 16*16 Maze (<code>int32_t grid[16][16]</code>) <br>
+Create a 16*16 Maze (<code>uint32_t grid[16][16]</code>) <br>
 for each cell in the grid <br>
 if cell == wall : it's marked "X" <br>
 else it's position value is encrypted and stored in the grid array as a 32-bit cipher <br>
@@ -77,7 +77,7 @@ shift right 16 bits, mask to 16 bits <br> <br>
 y = position & 0xFFFF <br>
 just take low 16 bits <br> <br> <br> </li>
 
-<li><h3>Reverse engineering to find the ID:</h3>
+<li><h3>Reverse engineering the ID:</h3>
 //not implemented in code <br>
 <code>cell_value = rotate_left(((x<<16 | y) XOR ID), ID % 32) </code> <br> <br>
 the key is to find the rotating value R = ID % 32 <br>
